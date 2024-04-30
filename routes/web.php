@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\Auth\RegistrationController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfileSettingsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,13 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -33,17 +33,26 @@ Route::middleware('auth')->group(function () {
 //require __DIR__.'/auth.php';
 
 
+Route::group(['as' => 'auth.'],function () {
 
-//sign-up
-Route::get('/register', [RegistrationController::class, 'register'])->name('auth.register');
-Route::post('/register', [RegistrationController::class, 'registerStore'])->name('auth.register.store');
+    Route::middleware('guest')->group(function () {
+        Route::get('/register', [RegistrationController::class, 'register'])->name('register');
+        Route::post('/register', [RegistrationController::class, 'registerStore'])->name('register.store');
+        Route::get('/email/availability', [RegistrationController::class, 'emailAvailability'])->name('email.availability');
+        Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
+        Route::post('/login', [AuthenticationController::class, 'loginSubmit'])->name('login.submit');
+    });
 
-//Email availability
-Route::get('/email/availability', [RegistrationController::class, 'emailAvailability'])->name('auth.email.availability');
+    Route::middleware('auth')->group(function () {
 
-//login
-Route::get('/login', [AuthenticationController::class, 'login'])->name('auth.login');
-Route::post('/login', [AuthenticationController::class, 'loginSubmit'])->name('auth.login.submit');
+        //profile
+        Route::get('/profile', [ProfileSettingsController::class, 'profile'])->name('profile');
 
-//logout
-Route::get('/logout', [AuthenticationController::class, 'logout'])->name('auth.logout');
+        Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
+        //change password
+        Route::get('/change-password', [ProfileSettingsController::class, 'changePassword'])->name('change.password');
+        Route::post('/change-password', [ProfileSettingsController::class, 'updatePassword'])->name('update.password');
+    });
+});
+
+

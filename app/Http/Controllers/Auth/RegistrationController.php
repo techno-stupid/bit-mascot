@@ -13,7 +13,6 @@ class RegistrationController extends Controller
 
     public function __construct(AuthenticationRepositoryInterface $authenticationRepository)
     {
-        $this->middleware('guest');
         $this->authenticationRepository = $authenticationRepository;
     }
 
@@ -28,7 +27,6 @@ class RegistrationController extends Controller
         return redirect('/');
     }
 
-    //emailAvailability
     public function emailAvailability(Request $request)
     {
         $response = $this->authenticationRepository->emailAvailabilityCheck($request->email);
