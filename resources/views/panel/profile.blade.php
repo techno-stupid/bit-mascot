@@ -9,10 +9,6 @@
             <div class="profile-section">
                 <div class="title text-center mb-4">User Profile</div>
                 <table class="table table-bordered">
-{{--                    <tr>--}}
-{{--                        <th>Field</th>--}}
-{{--                        <th>Details</th>--}}
-{{--                    </tr>--}}
                     <tr>
                         <td>First Name</td>
                         <td>{{ $user->first_name }}</td>

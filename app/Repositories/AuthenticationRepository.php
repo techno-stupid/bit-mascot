@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Constants\UserRoles;
 use App\Interfaces\AuthenticationRepositoryInterface;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -15,6 +16,7 @@ class AuthenticationRepository implements AuthenticationRepositoryInterface
         $data['password'] = Hash::make($data['password']);
         $user = User::create($data);
         event(new Registered($user));
+        $user->assignRole(UserRoles::USER);
         Auth::login($user);
     }
 

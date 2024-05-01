@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegistrationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileSettingsController;
+use App\Http\Controllers\UserManagementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,10 +45,8 @@ Route::group(['as' => 'auth.'],function () {
     });
 
     Route::middleware('auth')->group(function () {
-
         //profile
         Route::get('/profile', [ProfileSettingsController::class, 'profile'])->name('profile');
-
         Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
         //change password
         Route::get('/change-password', [ProfileSettingsController::class, 'changePassword'])->name('change.password');
@@ -56,3 +55,6 @@ Route::group(['as' => 'auth.'],function () {
 });
 
 
+Route::middleware('role:admin')->group(function () {
+    Route::get('/users', [UserManagementController::class, 'users'])->name('users');
+});
