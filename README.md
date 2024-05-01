@@ -56,3 +56,4 @@ The core idea behind the Project architecture is inspired by `SOLID` principles.
 - A customised version of `laravel/breeze` and `Session` for authentication
 - `Bootstrap 4.5` and `jQuery 3.6` for front end
 - `googlemail` for smtp support.
+- Since the dataset is small I've used `datatable` in the font end for search and pagination
