@@ -37,22 +37,22 @@ php artisan serve
 ```
 By default, the application will be accessible at http://localhost:8000 in your web browser.
 
-## Login Credentials for Admin
+### Login Credentials for Admin
 Email: `admin@localhost.local`
 Password: `admin`
 
-[note: Admin doesn't need OTP to login]
+[note: Admin doesn't need OTP to login but Users do.]
 
 ## About the Project Architecture
 
 This is a Laravel 10 application structured on the MVC pattern, with the addition of the `repository pattern` for better data handling. While the project is small, I've implemented `Repositories, Interfaces, Traits, Jobs, Constants, Middlewares`, and `Requests` to showcase my familiarity with these concepts. I've kept the project straightforward, scalable, and free from unnecessary complexity.
 
-The core idea behind the Project Architecture is inspired by SOLID.
+The core idea behind the Project architecture is inspired by `SOLID` principles.
 
 ### Packages and Tools used
 
-- Laravel Framework version 10,  
-- `googlemail` for smtp support.
+- Laravel Framework version 10,
 - `Spatie Permission` Package for Role/Permission
 - A customised version of `laravel/breeze` and `Session` for authentication
 - `Bootstrap 4.5` and `jQuery 3.6` for front end
+- `googlemail` for smtp support.
