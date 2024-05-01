@@ -45,6 +45,14 @@ Password: `admin`
 
 ## About the Project Architecture
 
-This is a Laravel 10 application structured on the MVC pattern, with the addition of the repository pattern for better data handling. While the project is small, I've implemented `Repositories, Interfaces, Traits, Jobs, Constants, Middlewares`, and `Requests` to showcase my familiarity with these concepts. I've kept the project straightforward, scalable, and free from unnecessary complexity.
+This is a Laravel 10 application structured on the MVC pattern, with the addition of the `repository pattern` for better data handling. While the project is small, I've implemented `Repositories, Interfaces, Traits, Jobs, Constants, Middlewares`, and `Requests` to showcase my familiarity with these concepts. I've kept the project straightforward, scalable, and free from unnecessary complexity.
 
-I've also used `googlemail` for smtp support.
+The core idea behind the Project Architecture is inspired by SOLID.
+
+### Packages and Tools used
+
+- Laravel Framework version 10,  
+- `googlemail` for smtp support.
+- `Spatie Permission` Package for Role/Permission
+- A customised version of `laravel/breeze` and `Session` for authentication
+- `Bootstrap 4.5` and `jQuery 3.6` for front end
