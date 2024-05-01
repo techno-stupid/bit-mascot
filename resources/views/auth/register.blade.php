@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
-    <!-- Bootstrap CSS -->
+    <title> BitMascot Registration Form</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .upload-area {
@@ -91,9 +90,9 @@
                             @enderror
                         </div>
                         <div class="form-group text-center">
-                            <label for="profilePicture" class="upload-area">
-                                <div>Upload NID/Office ID for verification</div>
-                                <input type="file" class="form-control-file" id="profilePicture" name="profilePicture">
+                            <label for="nid_file" class="upload-area">
+                                <div id="fileUploadText">Upload NID/Office ID for verification</div>
+                                <input type="file" class="form-control-file" id="nid_file" name="nid_file" onchange="updateUploadText(this)">
                             </label>
                         </div>
                         <div class="form-group">
@@ -129,7 +128,14 @@
 {{--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>--}}
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+<script>
+    function updateUploadText(input) {
+        // Get the file name
+        var fileName = input.files[0].name;
+        // Update the text to display the file name
+        document.getElementById('fileUploadText').innerText = 'File selected: ' + fileName;
+    }
+</script>
 <script>
     $(document).ready(function() {
         $('#email').keyup(function() {

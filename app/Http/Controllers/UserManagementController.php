@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Interfaces\ProfileSettingsRepositoryInterface;
 use App\Interfaces\UserManagementRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class UserManagementController extends Controller
 {
@@ -16,9 +16,9 @@ class UserManagementController extends Controller
         $this->userManagementRepository = $userManagementRepository;
     }
 
-    public function users(Request $request)
+    public function users(Request $request) : View
     {
         $users = $this->userManagementRepository->getAllUsers($request->searchQuery);
-        return view('panel.users',compact('users'));
+        return view('portal.users',compact('users'));
     }
 }

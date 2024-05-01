@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> BitMascot Login Form</title>
+    <title>Email verification</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -26,8 +26,10 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
+            <h1 class="text-center">Email verification</h1>
             <div class="card">
-                <div class="card-header text-center">Login to Admin/User Panel</div>
+                <div class="card-header text-center">An unique code has been sent to your email.</div>
+                <p></p>
 
                 <div class="card-body">
                     @if ($errors->has('wrong_credentials'))
@@ -35,21 +37,12 @@
                     @endif
 
 
-                    <form id="loginForm" action="{{route('auth.login.submit')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('auth.otp.submit')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="text" value="{{old('email')}}" class="form-control @error('email') is-invalid @enderror" id="email" name="email" >
-                            @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" >
-                            @error('password')
+                            <label for="otp">Email</label>
+                            <input type="text" class="form-control @error('otp') is-invalid @enderror" id="otp" name="otp" >
+                            @error('otp')
                             <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -57,7 +50,7 @@
                         </div>
 
                         <div style="text-align: center;">
-                            <button id="loginButton" type="submit" class="btn btn-primary" onclick="changeButtonText()">Login</button>
+                            <button type="submit" class="btn btn-primary">Verify</button>
                         </div>
                         <p style="text-align: center;" >Don't have an account? <a href="{{route('auth.register')}}">Register</a></p>
                     </form>
@@ -66,14 +59,7 @@
         </div>
     </div>
 </div>
-<script>
-    function changeButtonText() {
-        var button = document.getElementById('loginButton');
-        button.innerText = 'Logging in...';
-        button.disabled = true;
-        document.getElementById('loginForm').submit();
-    }
-</script>
+
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

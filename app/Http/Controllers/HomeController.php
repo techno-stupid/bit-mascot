@@ -13,6 +13,6 @@ class HomeController extends Controller
     }
     public function dashboard(Request $request): View
     {
-        return view('panel.welcome');
+        return view('portal.welcome');
     }
 }
