@@ -93,7 +93,11 @@
                             <label for="nid_file" class="upload-area">
                                 <div id="fileUploadText">Upload NID/Office ID for verification</div>
                                 <input type="file" class="form-control-file" id="nid_file" name="nid_file" onchange="updateUploadText(this)">
+
                             </label>
+                            @error('nid_file')
+                                    <strong class="text-danger">{{ $message }}</strong>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>

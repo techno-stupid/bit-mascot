@@ -24,6 +24,7 @@ class RegistrationRequest extends FormRequest
             'phone' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'date_of_birth' => 'required|date',
+            'nid_file' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
         ];
     }
 
@@ -53,6 +54,9 @@ class RegistrationRequest extends FormRequest
             'address.max' => 'Address must be less than 255 characters',
             'date_of_birth.required' => 'Date of birth is required',
             'date_of_birth.date' => 'Date of birth must be a valid date',
+            'nid_file.required' => 'NID is required',
+            'nid_file.mimes' => 'NID must be a file of type: jpg, jpeg, png, pdf',
+            'nid_file.max' => 'NID must be less than 2MB',
         ];
     }
 }
