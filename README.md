@@ -19,18 +19,18 @@ cp .env.example .env
 ```sh
 composer install
 ```
-### Step 3: Migration and Seed
+### Step 4: Migration and Seed
 
 ```sh
 php artisan migrate
 php artisan db:seed
 ```
-### Step 4: Create Storage Link for File uploading
+### Step 5: Create Storage Link
 
 ```sh
 php artisan storage:link
 ```
-### Step 5: Run the project
+### Step 6: Run the project
 
 ```sh
 php artisan serve
